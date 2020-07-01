@@ -1,6 +1,6 @@
 import requests,os
 
-#input format:[[filename,size,full_url],[...]]
+#files:input format:[[filename,size,full_url],[...]]
 
 def download(session,subject,files,login):
 	if not login:
