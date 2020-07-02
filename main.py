@@ -33,16 +33,28 @@ def main():
 			break
 		else:
 			print("You have entered an invalied time range, please try again.")
-	choice=input("Some files require login to be downloaded,would you like to login? y/N: ")
-	if choice.lower() == "y":
+	print("You can enter an optional keyword")
+	keyword=input("Your keyword (N for none),default is none: ")
+	if keyword == "N" or keyword =="" :
+		keyword=""
+		print("Your keyword is none")
+	else:
+		keyword=keyword.lower()
+		print("Your keyword is "+keyword)
+		keyword_confirm=input("Confirm? y/N: ").lower()
+		if keyword_confirm != "y":
+			keyword=""
+	want_login=input("Some files require login to be downloaded,would you like to login? y/N: ")
+
+	if want_login.lower() == "y":
 		username=input("Username: ")
 		password=getpass.getpass("Password: ")
 		l=login.Login(session,username,password)
 		session=l.start()
-		download.download(session,subject,retrieve.retrieve(subject,from_date,to_date),login=True)
+		download.download(session,subject,retrieve.retrieve(subject,keyword,from_date,to_date),login=True)
 		return 0
 	else:
-		download.download(session,subject,retrieve.retrieve(subject,from_date,to_date),login=False)
+		download.download(session,subject,retrieve.retrieve(subject,keyword,from_date,to_date),login=False)
 		return 0
 
 if __name__=="__main__":
