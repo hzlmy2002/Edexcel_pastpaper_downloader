@@ -4,6 +4,7 @@ def main():
 	subjects=payload.subject
 	session=requests.Session()
 	print("Download the following exam series,enter the number")
+	print("You can exit this program by entering ctrl+C at any time")
 	print("Enter q to exit\n")
 	while True:
 		for i in range(len(subjects)):
@@ -58,4 +59,11 @@ def main():
 		return 0
 
 if __name__=="__main__":
-	exit(main())
+	try:
+		print("Edexcel pastpapper downloader v1.1")
+		print("Copyright (C) 2020 Minyi_Lei hzlmy2002")
+		print("All rights reserved")
+		print("For project details,please check: https://github.com/hzlmy2002/edexcel_pastpaper_downloader\n")
+		exit(main())
+	except KeyboardInterrupt:
+		print("\nBye!")
