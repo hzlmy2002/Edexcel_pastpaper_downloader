@@ -23,7 +23,7 @@ def download(session,subject,file_list,login):
 	no=1
 	for i in file_list :		
 		if not login and "dam/secure" in i[3].lower():
-			print("Skip No."+str(no)+" "+i[0]+" as it requires login.")
+			print("Skip "+str(no)+" "+i[0]+" "+str(no)+"/"+str(len(file_list))+" as it requires login.")
 			no+=1
 		else:
 			print("Downloading "+i[0]+" "+i[1]+" "+str(no)+"/"+str(len(file_list)),end="\r")
@@ -40,7 +40,7 @@ def download(session,subject,file_list,login):
 					f.write(r.content)
 			elif "scheme" in i[0].lower():
 				path=os.path.join(os.getcwd(),answers_path)
-				path=os.path.join(path,(i[2]))
+				path=os.path.join(path,str(i[2]))
 				if not os.path.exists(path):
 					os.mkdir(path)
 				path=os.path.join(path,i[0])+".pdf"
