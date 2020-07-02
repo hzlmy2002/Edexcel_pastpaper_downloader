@@ -47,4 +47,4 @@ def retrieve(subject):
 				tmp.append("https://qualifications.pearson.com"+i["hits"][j]["url"])
 				results.append(tmp)
 		return results
-print(retrieve("ial-maths"))
+#print(retrieve("ial-maths"))
