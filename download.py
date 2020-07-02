@@ -33,11 +33,13 @@ def download(session,subject,files,login):
 			if "question" in i[0].lower():
 				path=os.path.join(os.getcwd(),pappers_path)
 				path=os.path.join(path,i[0])
+				path+=".pdf"
 				with open(path,'wb') as f:
 					f.write(r.content)
 			elif "scheme" in i[0].lower():
 				path=os.path.join(os.getcwd(),answers_path)
 				path=os.path.join(path,i[0])
+				path+=".pdf"
 				with open(path,'wb') as f:
 					f.write(r.content)
 	print("\n")
