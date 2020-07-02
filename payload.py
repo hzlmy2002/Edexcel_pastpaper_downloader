@@ -1,12 +1,18 @@
-def get():
-	subject=[
-		"ial-chemistry",
-		"ial18-chemistry",
-		"ial-economics",
-		"ial18-economics",
-		"ial-maths",
-		"ial18-maths",
-		"ial-physics",
-		"ial18-physics"
-	]
-	return subject
+subject=[
+	"ial-accounting",
+	"ial-applied-ict",
+	"ial-biology",
+	"ial18-biology",
+	"ial-chemistry",
+	"ial18-chemistry",
+	"ial-economics",
+	"ial18-economics",
+	"ial-geography",
+	"ial18-it",
+	"ial-law",
+	"ial-maths",
+	"ial18-maths",
+	"ial-physics",
+	"ial18-physics",
+	"ial-psychology"
+]

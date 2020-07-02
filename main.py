@@ -1,17 +1,21 @@
 import requests,getpass
 import payload,login,retrieve,download
 def main():
-	subjects=payload.get()
+	subjects=payload.subject
 	session=requests.Session()
 	print("Download the following exam series,enter the number")
+	print("Enter q to exit\n")
 	while True:
 		no=1
 		for i in subjects:
 			print(str(no)+"."+i)
 			no+=1
 		try:
-			choice=int(input("Your choice: "))
-			subject=subjects[choice-1]
+			choice=input("\nYour choice: ")
+			if choice == "q":
+				print("Exit")
+				return 0
+			subject=subjects[int(choice)-1]
 		except Exception:
 			print("Please try again.\n")
 			continue
