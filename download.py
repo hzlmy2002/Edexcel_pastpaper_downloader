@@ -1,4 +1,4 @@
-import requests,os,time
+import requests,os
 
 #files:input format:[[filename,size,date(201906),full_url],[...]]
 
