@@ -3,17 +3,15 @@ import payload,login,retrieve,download
 def main():
 	subjects=payload.subject
 	session=requests.Session()
-	print("Download the following exam series,enter the number")
-	print("You can exit this program by entering ctrl+C at any time")
-	print("Enter q to exit\n")
+	print("Tips: This program supports http proxy, you can enable this feature by setting the environment variable HTTP_PROXY or HTTPS_PROXY")
+	print('For example: export HTTP_PROXY="http://127.0.0.1:8080"\n')
+	print("Download the following exam series, enter the number")
+	print("You can exit this program by entering ctrl+C at any time\n")
 	while True:
 		for i in range(len(subjects)):
 			print(str(i+1)+"."+subjects[i])
 		try:
 			choice=input("\nYour choice: ")
-			if choice == "q":
-				print("Exit")
-				return 0
 			subject=subjects[int(choice)-1]
 		except Exception:
 			print("Please try again.\n")
@@ -21,7 +19,7 @@ def main():
 		print("You have selected: "+subject)
 		break
 	print("Select the time range of the exam papers")
-	print("Enter q to exit")
+	print("Enter ctrl+C to exit")
 	while True:
 		try:
 			from_date=int(input("From (Example:201306): "))
@@ -43,11 +41,10 @@ def main():
 		keyword=keyword.lower()
 		print("Your keyword is "+keyword)
 		keyword_confirm=input("Confirm? y/N: ").lower()
-		if keyword_confirm != "y":
+		if keyword_confirm != "y" or keyword_confirm != "yes":
 			keyword=""
-	want_login=input("Some files require login to be downloaded,would you like to login? y/N: ")
-
-	if want_login.lower() == "y":
+	want_login=input("Some files require login to be downloaded,would you like to login? y/N: ").lower()
+	if want_login == "y" or want_login == "yes":
 		username=input("Username: ")
 		password=getpass.getpass("Password: ")
 		l=login.Login(session,username,password)
@@ -64,6 +61,10 @@ if __name__=="__main__":
 		print("Copyright (C) 2020 Minyi_Lei hzlmy2002")
 		print("All rights reserved")
 		print("For project details,please check: https://github.com/hzlmy2002/edexcel_pastpaper_downloader\n")
-		exit(main())
+		status_code=main()
+		if status_code == 0:
+			print("\nMission completed!")
+			input()
+			exit(status_code)
 	except KeyboardInterrupt:
 		print("\nBye!")
