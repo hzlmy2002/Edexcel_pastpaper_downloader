@@ -59,12 +59,8 @@ if __name__=="__main__":
 		print("All rights reserved")
 		print("For project details,please check: https://github.com/hzlmy2002/edexcel_pastpaper_downloader\n")
 		while True:
-			status_code=main()
+			main()
 			print("\nProgram reset, you can now select another exam series")
 			print("Enter ctrl+C to exit.\n")
-		if status_code == 0:
-			print("\nMission completed!")
-			input()
-			exit(status_code)
 	except KeyboardInterrupt:
 		print("\nBye!")
