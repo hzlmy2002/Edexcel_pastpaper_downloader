@@ -32,12 +32,12 @@ def retrieve(subject,keyword,from_date,to_date):
 			payload=r'{"params":"query=&filters=category%3A%22Pearson-UK%3ADocument-Type%2FExaminer-report%22%20OR%20category%3A%22Pearson-UK%3ADocument-Type%2FExaminer-reports%22%20OR%20category%3A%22Pearson-UK%3ADocument-Type%2FData-files%22%20OR%20category%3A%22Pearson-UK%3ADocument-Type%2FData-Files%22%20OR%20category%3A%22Pearson-UK%3ADocument-Type%2FQuestion-paper%22%20OR%20category%3A%22Pearson-UK%3ADocument-Type%2FMark-scheme%22%20OR%20category%3A%22Pearson-UK%3ADocument-Type%2FListening-Examinations-MP3%22%20OR%20category%3A%22Pearson-UK%3ADocument-Type%2FScientific-article%22%20OR%20category%3A%22Pearson-UK%3ADocument-Type%2FPast-question-paper-and-mark-scheme%22%20AND%20(category%3A%22Pearson-UK%3ASpecification-Code%2F'+'{0}%22)&page={1}\"}}'.format(subject,str(i))
 			while True:
 				try:
-					tmp=requests.post(url,headers=headers,data=payload).json()
+					r=requests.post(url,headers=headers,data=payload).json()
 					break
 				except Exception as e:
 					print(str(e))
 					print("Connection error, retrying.\n")
-			raw_results.append(tmp)
+			raw_results.append(r)
 	results=[]
 	for i in raw_results:
 		hits=len(i["hits"])
@@ -45,6 +45,8 @@ def retrieve(subject,keyword,from_date,to_date):
 			tmp=[]
 			file_name=i["hits"][j]["title"]
 			if "question" not in file_name.lower() and "scheme" not in file_name.lower():
+				continue
+			elif keyword not in file_name.lower():
 				continue
 			tmp.append(file_name)
 			tmp.append(i["hits"][j]["size"])
@@ -59,8 +61,8 @@ def retrieve(subject,keyword,from_date,to_date):
 				sys.stderr.write(str(e)+"\n\n")
 				continue
 			tmp.append("https://qualifications.pearson.com"+i["hits"][j]["url"])
-#filter
-			if (date >= from_date and date <= to_date) and keyword in file_name.lower():
-				results.append(tmp)
+			if not (date >= from_date and date <= to_date):
+				continue
+			results.append(tmp)
 	return results
 #print(retrieve("ial-maths"))

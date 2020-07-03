@@ -23,7 +23,7 @@ def download(session,subject,file_list,login):
 	no=1
 	for i in file_list :		
 		if not login and "dam/secure" in i[3].lower():
-			print("Skip {0}/{1}    {2}    as it requires login.".format(str(no),str(len(file_list),i[0])))
+			print("Skip {0}/{1}    {2}    as it requires login.".format(str(no),str(len(file_list)),i[0]))
 			no+=1
 		else:
 			print("Download {0}/{1}    {2} {3}".format(str(no),str(len(file_list)),i[0],i[1]),end="\r")

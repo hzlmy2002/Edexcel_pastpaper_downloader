@@ -37,12 +37,9 @@ def main():
 	if keyword == "N" or keyword =="" :
 		keyword=""
 		print("Your keyword is none")
-	else:
+	elif len(keyword) != 0:
 		keyword=keyword.lower()
-		print("Your keyword is "+keyword)
-		keyword_confirm=input("Confirm? y/N: ").lower()
-		if keyword_confirm != "y" or keyword_confirm != "yes":
-			keyword=""
+		print("Your keyword is: "+keyword)
 	want_login=input("Some files require login to be downloaded,would you like to login? y/N: ").lower()
 	if want_login == "y" or want_login == "yes":
 		username=input("Username: ")
