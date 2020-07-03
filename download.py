@@ -1,32 +1,25 @@
-import requests,os
+import requests,os,time
 
 #files:input format:[[filename,size,date(201906),full_url],[...]]
 
 def download(session,subject,file_list,login):
-	if not login:
-		session=requests.Session()
-	try:
+	length=len(file_list)
+	if not os.path.exists(subject):
 		os.mkdir(subject)
-	except Exception:
-		pass
-	try:
-		pappers_path=os.path.join(subject,"test_pappers")
+	pappers_path=os.path.join(subject,"test_pappers")
+	if not os.path.exists(pappers_path):
 		os.mkdir(pappers_path)
-	except Exception:
-		pass
-	try:
-		answers_path=os.path.join(subject,"mark_scheme")
+	answers_path=os.path.join(subject,"mark_scheme")
+	if not os.path.exists(answers_path):
 		os.mkdir(answers_path)
-	except Exception:
-		pass	
-	print("Totally: "+str(len(file_list))+"\n")
+	print("Totally: {0}.\n".format(str(length)))
 	no=1
 	for i in file_list :		
 		if not login and "dam/secure" in i[3].lower():
-			print("Skip {0}/{1}    {2}    as it requires login.".format(str(no),str(len(file_list)),i[0]))
+			print("Skip {0}/{1}    {2}    as it requires login.".format(str(no),str(length),i[0]))
 			no+=1
 		else:
-			print("Download {0}/{1}    {2} {3}".format(str(no),str(len(file_list)),i[0],i[1]),end="\r")
+			print("Download {0}/{1}    {2} {3}".format(str(no),str(length),i[0],i[1]),end="\r")
 			if "question" in i[0].lower():
 				path=os.path.join(os.getcwd(),pappers_path)
 				path=os.path.join(path,str(i[2]))
@@ -40,7 +33,7 @@ def download(session,subject,file_list,login):
 					os.mkdir(path)
 				path=os.path.join(path,i[0])+".pdf"	
 			if os.path.exists(path):
-				print("Skip {0}/{1}    {2}     as it has been downloaded".format(str(no),str(len(file_list)),i[0]))
+				print("Skip {0}/{1}    {2}     as it has been downloaded".format(str(no),str(length),i[0]))
 				no+=1
 				continue
 			while True:
