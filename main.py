@@ -1,4 +1,4 @@
-import requests,getpass
+import requests,getpass,time
 import payload,login,retrieve,download
 def main():
 	subjects=payload.subject
@@ -62,5 +62,6 @@ if __name__=="__main__":
 			main()
 			print("\nProgram reset, you can now select another exam series")
 			print("Enter ctrl+C to exit.\n")
+			time.sleep(3)
 	except KeyboardInterrupt:
 		print("\nBye!")
