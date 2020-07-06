@@ -56,6 +56,7 @@ if __name__=="__main__":
 	try:
 		print("Edexcel pastpapper downloader v1.2")
 		print("Copyright (C) 2020 Minyi_Lei hzlmy2002")
+		print("This program is licensed under GNU AGPL-3.0-only")
 		print("All rights reserved")
 		print("For project details,please check: https://github.com/hzlmy2002/edexcel_pastpaper_downloader\n")
 		while True:
