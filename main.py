@@ -4,10 +4,6 @@ import payload,login,retrieve,download
 def main():
 	subjects=sorted(payload.subject)
 	session=requests.Session()
-	print("Tips: This program supports http proxy, you can enable this feature by setting the environment variable HTTP_PROXY or HTTPS_PROXY")
-	print('For example: export HTTP_PROXY="http://127.0.0.1:8080"\n')
-	print("Download the following exam series, enter the number")
-	print("You can exit this program by entering ctrl+C at any time\n")
 	while True:
 		for i in range(len(subjects)):
 			print("{:2d}.{}".format(i+1,subjects[i]))
@@ -59,12 +55,16 @@ if __name__ == "__main__":
 		print("Copyright (C) 2020 Minyi_Lei hzlmy2002")
 		print("This program is licensed under GNU AGPL-3.0-only")
 		print("All rights reserved\n")
-		print("For project details,please check: https://github.com/hzlmy2002/edexcel_pastpaper_downloader\n")
+		print("For project details,please check: https://github.com/hzlmy2002/Edexcel_pastpaper_downloader\n")
+		print("Tips: This program supports http proxy, you can enable this feature by setting the environment variable HTTP_PROXY or HTTPS_PROXY")
+		print('For example: export HTTP_PROXY="http://127.0.0.1:8080"\n')
+		print("Download the following exam series, enter the number")
+		print("You can exit this program by entering ctrl+C at any time\n")
 		while True:
 			main()
 			print("\nProgram reset, you can now select another exam series")
 			print("Enter ctrl+C to exit.\n")
-			time.sleep(3)
+			time.sleep(1.5)
 	except KeyboardInterrupt:
 		print("\nBye!")
 		time.sleep(0.5)
