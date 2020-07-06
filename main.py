@@ -51,7 +51,7 @@ def main():
 
 if __name__ == "__main__":
 	try:
-		print("Edexcel pastpaper downloader v1.2.2")
+		print("Edexcel pastpaper downloader v1.2.3")
 		print("Copyright (C) 2020 Minyi_Lei hzlmy2002")
 		print("This program is licensed under GNU AGPL-3.0-only")
 		print("All rights reserved\n")
