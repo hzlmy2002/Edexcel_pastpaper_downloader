@@ -1,3 +1,4 @@
+#note:This is the static payload of the program, you can edit this file to download new subjects
 subject=[
 	"ial-accounting",
 	"ial-applied-ict",
